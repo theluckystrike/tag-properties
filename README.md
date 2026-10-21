@@ -44,7 +44,7 @@ Free mode uses the first configured property. If Pro becomes inactive, your full
 
 ## Install
 
-Tag Properties needs Obsidian 1.13.4 or newer and supports desktop and mobile. Once it is listed, open Settings, Community plugins, Browse, search for “Tag Properties”, and select Install and Enable.
+Tag Properties needs Obsidian 1.13.4 or newer and supports desktop and mobile. Open Settings, Community plugins, Browse, search for “Tag Properties”, and select Install and Enable.
 
 For a manual installation, copy `main.js`, `manifest.json` and `styles.css` from a release into `<vault>/.obsidian/plugins/tag-properties/`. Reload community plugins and enable it. No account is needed to use the free tier.
 
@@ -67,6 +67,8 @@ topics:
 Quote values that start with a hash when you edit YAML directly. An unquoted hash starts a YAML comment. A plain text property containing `research` is not a list and is ignored. Change its property type to List if you want it indexed.
 
 ## Settings
+
+After a minor or major update, this plugin opens one What's new tab in the background. The tab and settings card suggest other NoteMods plugins and Zovo Chat and link to notemods.com for feedback ([privacy](https://notemods.com/privacy/)). The tab sends no data. Turn the tab off in Settings.
 
 | Setting | Default | Effect |
 | --- | --- | --- |

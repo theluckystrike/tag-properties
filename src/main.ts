@@ -5,6 +5,8 @@ import { bindPro, isPro, SPONSORS } from './pro';
 import { DEFAULT_SETTINGS, normalizeSettings, TagPropertiesSettingTab, type TagPropertiesSettings } from './settings';
 import { activeProperties, buildIndex, type NoteTags, type TagRow } from './tags';
 import { TagPropertiesView, VIEW_TYPE } from './view';
+import { setupHello } from './hello/index';
+import WHATS_NEW from './whats-new.json';
 
 export default class TagPropertiesPlugin extends Plugin {
 	settings: TagPropertiesSettings = { ...DEFAULT_SETTINGS };
@@ -13,6 +15,8 @@ export default class TagPropertiesPlugin extends Plugin {
 	private currentPath = '';
 	private stopped = false;
 	async onload(): Promise<void> {
+		// First: "What's new" reads its state before the settings load (packages/hello). It does not wait.
+		setupHello(this, WHATS_NEW);
 		await this.loadSettings();
 		this.pro = createGitHubSponsors(this.app, this.manifest.id, SPONSORS, this);
 		this.pro.init();
