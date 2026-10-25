@@ -1,5 +1,6 @@
 {
 	"name": "tag-properties",
+	"repository": {"type": "git", "url": "theluckystrike/tag-properties.git"},
 	"version": "1.2.0",
 	"private": true,
 	"description": "Browse custom list properties as clickable tags with note counts and Bases filters.",
