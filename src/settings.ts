@@ -1,7 +1,8 @@
-import { PluginSettingTab, type App, type SettingDefinitionItem } from 'obsidian';
+import { PluginSettingTab, type App, type Notice, type SettingDefinitionItem } from 'obsidian';
 import { sponsorsSettingItems } from './license/github-obsidian';
 import type TagPropertiesPlugin from './main';
-import { PRO_UI } from './pro';
+import { PRO_CORE, PRO_SEVERAL, PRO_UI, proNotice } from './pro';
+import { activeProperties } from './tags';
 import { helloSettingItems } from './hello/settings';
 
 export interface TagPropertiesSettings { properties: string; includeCore: boolean }
@@ -26,8 +27,29 @@ export class TagPropertiesSettingTab extends PluginSettingTab {
 			...(this.host.pro ? sponsorsSettingItems(this.host.pro, PRO_UI) : []),
 		];
 	}
+	/** The last Pro notice of this tab. A second notice does not show while it is open. */
+	private notice: Notice | null = null;
+	private refuse(lead: string): void { if (!this.notice?.messageEl.isConnected) this.notice = proNotice(lead); }
+
+	getControlValue(key: string): unknown {
+		// A free user sees the value in effect: core tags are not in the view. The stored choice stays for Pro.
+		if (key === 'includeCore' && !this.host.isPro()) return false;
+		return super.getControlValue(key);
+	}
+
 	async setControlValue(key: string, value: unknown): Promise<void> {
+		if (key === 'includeCore' && !this.host.isPro()) {
+			// A free user selected a Pro toggle: tell how to get Pro and save nothing. Move the focus out, then draw the
+			// tab again, so the toggle shows off (Obsidian does not draw a focused control again).
+			this.refuse(PRO_CORE);
+			const active = this.containerEl.ownerDocument.activeElement as HTMLElement | null;
+			if (active && this.containerEl.contains(active)) active.blur();
+			this.update();
+			return;
+		}
 		await super.setControlValue(key, value);
+		// The first tag property is free and saves. More names need Pro: tell a free user once while the notice shows.
+		if (key === 'properties' && !this.host.isPro() && activeProperties(value, true).length > 1) this.refuse(PRO_SEVERAL);
 		this.host.refresh();
 	}
 }

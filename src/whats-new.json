@@ -1,15 +1,9 @@
 {
 	"id": "tag-properties",
 	"name": "Tag Properties",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"changes": [
-		"New Send feedback command. It opens a page where you can report a problem or suggest an idea.",
-		"Adds a custom list tag view with note counts, clickable results and native Bases filters.",
-		"Adds optional multiple properties and combined core tags through GitHub Sponsors."
-	],
-	"changes_user": [
-		"New Send feedback command. It opens a page where you can report a problem or suggest an idea.",
-		"Settings now end with a More from NoteMods group, where you can turn this tab off or open it again."
+		"Include core tags and a second tag property now show how to get Pro, with a Sponsor on GitHub button. The first tag property stays free."
 	],
 	"tip": "Select \"Copy bases filter\" to use the current tag selection in the advanced filter editor of a base.",
 	"thanks": "Hi, I am Michael, a solo developer in Poland. Tag Properties is one of over 100 small plugins that I make. Thank you for using it to browse your notes by topic.",

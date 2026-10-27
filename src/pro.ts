@@ -1,6 +1,8 @@
 // Pro through GitHub Sponsors (packages/license, github.ts). product.yaml pro: holds the same values; fx check compares them.
 // This file is the one Pro facade: every Pro check in the plugin calls isPro() or onProChange().
+import type { Notice } from 'obsidian';
 import type { SponsorsConfig, SponsorsManager } from './license/index';
+import { showProNotice } from './license/github-obsidian';
 
 export const SPONSORS: SponsorsConfig = {
 	// Public client id of the seller's OAuth App (device flow on, no client secret anywhere).
@@ -34,4 +36,13 @@ export function isPro(): boolean {
 /** Calls cb after every change of the Pro state. Returns the function that removes cb. */
 export function onProChange(cb: () => void): () => void {
 	return manager ? manager.onChange(cb) : () => undefined;
+}
+
+/** Leads of the Pro notices of the settings. */
+export const PRO_CORE = 'Core tags in this view need Pro.';
+export const PRO_SEVERAL = 'Several tag properties need Pro. Free uses the first name.';
+
+/** Shows the shared Pro notice: the lead, then the next step for this user. A free user gets a Sponsor on GitHub button. */
+export function proNotice(lead: string): Notice | null {
+	return showProNotice(manager, lead);
 }

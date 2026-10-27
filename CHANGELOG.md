@@ -1,5 +1,11 @@
 # tag-properties
 
+## 1.2.1
+
+### Patch Changes
+
+- 38740cd: Include core tags and a second tag property now show how to get Pro, with a Sponsor on GitHub button. The first tag property stays free.
+
 ## 1.2.0
 
 ### Minor Changes
