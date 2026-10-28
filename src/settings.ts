@@ -1,5 +1,5 @@
 import { PluginSettingTab, type App, type Notice, type SettingDefinitionItem } from 'obsidian';
-import { sponsorsSettingItems } from './license/github-obsidian';
+import { sponsorsSettingItems, redrawKeepFocus } from './license/github-obsidian';
 import type TagPropertiesPlugin from './main';
 import { PRO_CORE, PRO_SEVERAL, PRO_UI, proNotice } from './pro';
 import { activeProperties } from './tags';
@@ -42,9 +42,7 @@ export class TagPropertiesSettingTab extends PluginSettingTab {
 			// A free user selected a Pro toggle: tell how to get Pro and save nothing. Move the focus out, then draw the
 			// tab again, so the toggle shows off (Obsidian does not draw a focused control again).
 			this.refuse(PRO_CORE);
-			const active = this.containerEl.ownerDocument.activeElement as HTMLElement | null;
-			if (active && this.containerEl.contains(active)) active.blur();
-			this.update();
+			redrawKeepFocus(this);
 			return;
 		}
 		await super.setControlValue(key, value);

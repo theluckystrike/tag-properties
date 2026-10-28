@@ -1,7 +1,7 @@
 {
 	"id": "tag-properties",
 	"name": "Tag Properties",
-	"version": "1.2.1",
+	"version": "1.2.2",
 	"minAppVersion": "1.13.4",
 	"description": "Browse custom list properties as clickable tags with note counts and Bases filters.",
 	"author": "Michael Lip",

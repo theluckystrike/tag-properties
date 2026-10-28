@@ -1,9 +1,9 @@
 {
 	"id": "tag-properties",
 	"name": "Tag Properties",
-	"version": "1.2.1",
+	"version": "1.2.2",
 	"changes": [
-		"Include core tags and a second tag property now show how to get Pro, with a Sponsor on GitHub button. The first tag property stays free."
+		"When the settings refuse a Pro choice, for example in Include core tags, the keyboard focus now stays on that setting."
 	],
 	"tip": "Select \"Copy bases filter\" to use the current tag selection in the advanced filter editor of a base.",
 	"thanks": "Hi, I am Michael, a solo developer in Poland. Tag Properties is one of over 100 small plugins that I make. Thank you for using it to browse your notes by topic.",
