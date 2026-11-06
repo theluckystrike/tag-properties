@@ -8,7 +8,7 @@ import manifest from '../manifest.json';
 
 // A free user who selects Include core tags, or saves more than one tag property, gets the shared Pro notice with
 // the "Sponsor on GitHub" button. The toggle is not saved and shows off. The first tag property still saves (free).
-const PITCH = 'Sponsor on GitHub, then sign in from the plugin settings.';
+const PITCH = 'One payment turns on Pro in every NoteMods plugin. Sponsor on GitHub, then sign in from the plugin settings.';
 
 function fakePro(pro: boolean): SponsorsManager {
 	return {
